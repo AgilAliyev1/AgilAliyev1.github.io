@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="200" viewBox="0 0 320 200" role="img" aria-label="Hobby placeholder">
+  <rect width="320" height="200" fill="#f5f7fb"/>
+  <g stroke="#0078ff" stroke-width="6" fill="none">
+    <circle cx="60" cy="100" r="30"/>
+    <rect x="110" y="60" width="80" height="80" rx="8"/>
+    <path d="M220 140 L260 60 L300 140 Z"/>
+  </g>
+</svg>
+

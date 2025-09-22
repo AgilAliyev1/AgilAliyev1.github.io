@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Questionnaire">
+    <meta name="author" content="Agil Aliyev">
+    <title>Questionnaire | Agil Aliyev</title>
+    <link rel="icon" href="assets/favicon.ico">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="education.html">Education</a> |
+            <a href="schedule.html">Weekly Schedule</a> |
+            <a href="contact.html">Contact Me</a> |
+            <a href="questionnaire.html">Questionnaire</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Short Questionnaire</h1>
+        <form action="mailto:you@example.com" method="post" enctype="text/plain">
+            <fieldset>
+                <legend>Yes/No Questions</legend>
+                <label>Do you like coding?
+                    <select name="like_coding">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </label>
+                <br>
+                <label><input type="checkbox" name="newsletter" value="yes"> Receive newsletter</label>
+            </fieldset>
+            <fieldset>
+                <legend>Ratings</legend>
+                <label for="skill">Rate your HTML skill (1-5):</label>
+                <input type="range" id="skill" name="html_skill" min="1" max="5" value="3">
+                <br>
+                <label for="satisfaction">Satisfaction (1-10):</label>
+                <input type="number" id="satisfaction" name="satisfaction" min="1" max="10" value="7">
+            </fieldset>
+            <fieldset>
+                <legend>Multiple Choice</legend>
+                <p>Favorite area:</p>
+                <label><input type="radio" name="favorite_area" value="frontend"> Front-end</label>
+                <label><input type="radio" name="favorite_area" value="backend"> Back-end</label>
+                <label><input type="radio" name="favorite_area" value="fullstack" checked> Full-stack</label>
+                <br>
+                <label for="tools">Tools you use:</label>
+                <select id="tools" name="tools" multiple size="4">
+                    <option value="git">Git</option>
+                    <option value="docker">Docker</option>
+                    <option value="vscode">VS Code</option>
+                    <option value="node">Node.js</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <legend>Comments</legend>
+                <textarea name="comments" rows="5" cols="60" placeholder="Anything else to share?"></textarea>
+            </fieldset>
+            <p>
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </p>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; <span id="year"></span> Agil Aliyev</p>
+        <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        </script>
+    </footer>
+</body>
+</html>
+

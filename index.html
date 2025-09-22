@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Personal website home page">
+    <meta name="author" content="Agil Aliyev">
+    <title>Home Agil Aliyev</title>
+    <link rel="icon" href="assets/favicon.ico">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="education.html">Education</a> |
+            <a href="schedule.html">Weekly Schedule</a> |
+            <a href="contact.html">Contact Me</a> |
+            <a href="questionnaire.html">Questionnaire</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h1>Hi, I'm Agil Aliyev <span aria-label="waving hand" role="img">👋</span></h1>
+            <p>Welcome to my personal website. I'm a student passionate about web development, problem solving, and lifelong learning.</p>
+            <p>When I'm not coding, I enjoy gaming, hiking, and tinkering with side projects.</p>
+        </section>
+        <section>
+            <h2>About Me</h2>
+            <ul>
+                <li>Location: Baku</li>
+                <li>Interests: Web, Cybersecurity, entrepreneurship</li>
+                <li>Goal: Build delightful, accessible products</li>
+            </ul>
+            <h3>Top 3 Focus Areas</h3>
+            <ol>
+                <li>Front-end</li>
+                <li>Cybersecurity</li>
+                <li>Continuous improvement</li>
+            </ol>
+        </section>
+        <section>
+            <h2>Images</h2>
+            <figure>
+                <img src="images/profile.svg" alt="Profile picture" width="160" height="160" style="border-radius:50%">
+                <figcaption>Profile picture (placeholder)</figcaption>
+            </figure>
+            <figure>
+                <img src="images/hobby.svg" alt="Hobby illustration" width="320" height="200">
+                <figcaption>One of my hobbies</figcaption>
+            </figure>
+        </section>
+        <section>
+            <h2>Links</h2>
+            <p>Check out my favorite resource: <a href="https://developer.mozilla.org/" target="_blank" rel="noopener">MDN Web Docs</a>.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; <span id="year"></span> Agil Aliyev</p>
+        <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        </script>
+    </footer>
+</body>
+</html>
+
