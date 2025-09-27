@@ -1,89 +1,133 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Weekly schedule timetable">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule — Agil Aliyev</title>
+    <meta name="description" content="Weekly academic schedule and time management of Agil Aliyev">
     <meta name="author" content="Agil Aliyev">
-    <title>Weekly Schedule | Agil Aliyev</title>
-    <link rel="icon" href="assets/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📅</text></svg>">
 </head>
 <body>
     <header>
-        <nav>
-            <a href="index.html">Home</a> |
-            <a href="education.html">Education</a> |
-            <a href="schedule.html">Weekly Schedule</a> |
-            <a href="contact.html">Contact Me</a> |
-            <a href="questionnaire.html">Questionnaire</a>
-        </nav>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Agil Aliyev</a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="education.html">Education</a></li>
+                        <li><a href="schedule.html" aria-current="page">Schedule</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="questionnaire.html">Survey</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </header>
+
     <main>
-        <h1>Weekly Schedule</h1>
-        <table border="1" cellpadding="6" cellspacing="0">
-            <caption>My Weekly Timetable</caption>
-            <thead>
-                <tr>
-                    <th>Time</th>
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday</th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
-                    <th>Saturday</th>
-                    <th>Sunday</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>08:30 - 09:45</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Probability &amp; Statistics</td>
-                    <td>Probability &amp; Statistics</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>10:00 - 11:15</td>
-                    <td>Linear Algebra</td>
-                    <td></td>
-                    <td></td>
-                    <td>Entrepreneurship</td>
-                    <td>Entrepreneurship</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>13:00 - 14:15</td>
-                    <td></td>
-                    <td>Intro to Computer Networks</td>
-                    <td></td>
-                    <td>Intro to Computer Networks</td>
-                    <td>Linear Algebra</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>16:00 - 17:15</td>
-                    <td></td>
-                    <td>Web &amp; Mobile I</td>
-                    <td></td>
-                    <td>Web &amp; Mobile I</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="content-wrapper">
+            <section class="hero">
+                <h1>My Weekly Schedule</h1>
+                <p>Balancing academics, projects, and personal development with efficient time management.</p>
+            </section>
+
+            <section class="section">
+                <div class="layout-grid">
+                    <div class="content">
+                        <h2>Academic Timetable</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Monday</th>
+                                    <th>Tuesday</th>
+                                    <th>Wednesday</th>
+                                    <th>Thursday</th>
+                                    <th>Friday</th>
+                                    <th>Saturday</th>
+                                    <th>Sunday</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>08:30 - 09:45</strong></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-primary">Probability & Statistics</td>
+                                    <td class="text-primary">Probability & Statistics</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>10:00 - 11:15</strong></td>
+                                    <td class="text-secondary">Linear Algebra</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-secondary">Entrepreneurship</td>
+                                    <td class="text-secondary">Entrepreneurship</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>13:00 - 14:15</strong></td>
+                                    <td></td>
+                                    <td class="text-primary">Computer Networks</td>
+                                    <td></td>
+                                    <td class="text-primary">Computer Networks</td>
+                                    <td class="text-secondary">Linear Algebra</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>16:00 - 17:15</strong></td>
+                                    <td></td>
+                                    <td class="text-warning">Web & Mobile I</td>
+                                    <td></td>
+                                    <td class="text-warning">Web & Mobile I</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                  
+        </div>
     </main>
+
     <footer>
-        <p>&copy; <span id="year"></span> Agil Aliyev</p>
-        <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-        </script>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Agil Aliyev. Built with precision and care.</p>
+        </div>
     </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Add subtle animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-up');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.card, table').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 </html>
-

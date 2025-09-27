@@ -1,77 +1,229 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Questionnaire">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survey — Agil Aliyev</title>
+    <meta name="description" content="Interactive questionnaire and survey form">
     <meta name="author" content="Agil Aliyev">
-    <title>Questionnaire | Agil Aliyev</title>
-    <link rel="icon" href="assets/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
 </head>
 <body>
     <header>
-        <nav>
-            <a href="index.html">Home</a> |
-            <a href="education.html">Education</a> |
-            <a href="schedule.html">Weekly Schedule</a> |
-            <a href="contact.html">Contact Me</a> |
-            <a href="questionnaire.html">Questionnaire</a>
-        </nav>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Agil Aliyev</a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="education.html">Education</a></li>
+                        <li><a href="schedule.html">Schedule</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="questionnaire.html" aria-current="page">Survey</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </header>
+
     <main>
-        <h1>Short Questionnaire</h1>
-        <form action="mailto:you@example.com" method="post" enctype="text/plain">
-            <fieldset>
-                <legend>Yes/No Questions</legend>
-                <label>Do you like coding?
-                    <select name="like_coding">
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </label>
-                <br>
-                <label><input type="checkbox" name="newsletter" value="yes"> Receive newsletter</label>
-            </fieldset>
-            <fieldset>
-                <legend>Ratings</legend>
-                <label for="skill">Rate your HTML skill (1-5):</label>
-                <input type="range" id="skill" name="html_skill" min="1" max="5" value="3">
-                <br>
-                <label for="satisfaction">Satisfaction (1-10):</label>
-                <input type="number" id="satisfaction" name="satisfaction" min="1" max="10" value="7">
-            </fieldset>
-            <fieldset>
-                <legend>Multiple Choice</legend>
-                <p>Favorite area:</p>
-                <label><input type="radio" name="favorite_area" value="frontend"> Front-end</label>
-                <label><input type="radio" name="favorite_area" value="backend"> Back-end</label>
-                <label><input type="radio" name="favorite_area" value="fullstack" checked> Full-stack</label>
-                <br>
-                <label for="tools">Tools you use:</label>
-                <select id="tools" name="tools" multiple size="4">
-                    <option value="git">Git</option>
-                    <option value="docker">Docker</option>
-                    <option value="vscode">VS Code</option>
-                    <option value="node">Node.js</option>
-                </select>
-            </fieldset>
-            <fieldset>
-                <legend>Comments</legend>
-                <textarea name="comments" rows="5" cols="60" placeholder="Anything else to share?"></textarea>
-            </fieldset>
-            <p>
-                <button type="submit">Submit</button>
-                <button type="reset">Reset</button>
-            </p>
-        </form>
+        <div class="content-wrapper">
+            <section class="hero">
+                <h1>Quick Survey</h1>
+                <p>Help me understand your interests and preferences in technology</p>
+            </section>
+
+            <section class="section">
+                <div class="layout-flex">
+                    <div class="content">
+                        <h2>Technology Preferences Survey</h2>
+                        <p>This survey helps me understand what technologies and topics interest you most. Your responses will help me create better content and projects.</p>
+                        
+                        <form action="mailto:aqilliyev207@gmail.com?subject=Survey%20Response" method="post" enctype="text/plain">
+                            <fieldset>
+                                <legend>Basic Information</legend>
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" placeholder="Enter your name" class="focus-ring">
+                                
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="your.email@example.com" class="focus-ring">
+                                
+                                <label for="experience">Experience Level</label>
+                                <select id="experience" name="experience" class="focus-ring">
+                                    <option value="">Select your level</option>
+                                    <option value="beginner">Beginner (0-1 years)</option>
+                                    <option value="intermediate">Intermediate (1-3 years)</option>
+                                    <option value="advanced">Advanced (3+ years)</option>
+                                    <option value="professional">Professional</option>
+                                </select>
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>Technology Interests</legend>
+                                <p>Do you enjoy coding?</p>
+                                <label>
+                                    <input type="radio" name="coding_love" value="yes"> 
+                                    Yes, I love it! 💻
+                                </label>
+                                <label>
+                                    <input type="radio" name="coding_love" value="sometimes"> 
+                                    Sometimes, depends on the project
+                                </label>
+                                <label>
+                                    <input type="radio" name="coding_love" value="no"> 
+                                    Not really, but I'm learning
+                                </label>
+                                
+                                <br><br>
+                                <label for="favorite_area">Favorite Development Area:</label>
+                                <select id="favorite_area" name="favorite_area" class="focus-ring">
+                                    <option value="">Choose one</option>
+                                    <option value="frontend">Frontend Development</option>
+                                    <option value="backend">Backend Development</option>
+                                    <option value="fullstack">Full-Stack Development</option>
+                                    <option value="mobile">Mobile Development</option>
+                                    <option value="devops">DevOps</option>
+                                    <option value="cybersecurity">Cybersecurity</option>
+                                    <option value="data">Data Science</option>
+                                    <option value="ai">Artificial Intelligence</option>
+                                </select>
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>Skill Assessment</legend>
+                                <label for="html_skill">HTML/CSS Skill Level (1-5):</label>
+                                <input type="range" id="html_skill" name="html_skill" min="1" max="5" value="3" oninput="updateRangeValue('html_skill', 'html_value')" class="focus-ring">
+                                <span id="html_value">3</span>
+                                
+                                <br><br>
+                                <label for="javascript_skill">JavaScript Skill Level (1-5):</label>
+                                <input type="range" id="javascript_skill" name="javascript_skill" min="1" max="5" value="3" oninput="updateRangeValue('javascript_skill', 'js_value')" class="focus-ring">
+                                <span id="js_value">3</span>
+                                
+                                <br><br>
+                                <label for="satisfaction">Overall Satisfaction with Tech Learning (1-10):</label>
+                                <input type="number" id="satisfaction" name="satisfaction" min="1" max="10" value="7" class="focus-ring">
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>Tools & Technologies</legend>
+                                <p>Which tools do you use regularly?</p>
+                                <label>
+                                    <input type="checkbox" name="tools" value="git"> 
+                                    Git Version Control
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="tools" value="vscode"> 
+                                    VS Code Editor
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="tools" value="react"> 
+                                    React Framework
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="tools" value="node"> 
+                                    Node.js
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="tools" value="docker"> 
+                                    Docker
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="tools" value="figma"> 
+                                    Figma Design
+                                </label>
+                                
+                                <br><br>
+                                <label for="tools_select">Additional Tools (select multiple):</label>
+                                <select id="tools_select" name="tools_select" multiple size="4" class="focus-ring">
+                                    <option value="python">Python</option>
+                                    <option value="java">Java</option>
+                                    <option value="php">PHP</option>
+                                    <option value="sql">SQL</option>
+                                    <option value="mongodb">MongoDB</option>
+                                    <option value="aws">AWS</option>
+                                    <option value="linux">Linux</option>
+                                </select>
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>Preferences</legend>
+                                <label>
+                                    <input type="checkbox" id="newsletter" name="newsletter" value="yes"> 
+                                    Subscribe to my newsletter for tech updates and project insights
+                                </label>
+                                
+                                <br><br>
+                                <label>
+                                    <input type="checkbox" id="collaboration" name="collaboration" value="yes"> 
+                                    Interested in collaboration opportunities
+                                </label>
+                                
+                                <br><br>
+                                <label>
+                                    <input type="checkbox" id="mentorship" name="mentorship" value="yes"> 
+                                    Would like mentorship or guidance
+                                </label>
+                            </fieldset>
+
+                            <fieldset>
+                                <legend>Additional Comments</legend>
+                                <label for="comments">Any additional thoughts or suggestions?</label>
+                                <textarea id="comments" name="comments" rows="5" placeholder="Share your thoughts about technology, learning resources, or any suggestions for my website..." class="focus-ring"></textarea>
+                            </fieldset>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-success">Submit Survey</button>
+                                <button type="reset" class="btn btn-secondary">Clear Form</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+
+            
+        </div>
     </main>
+
     <footer>
-        <p>&copy; <span id="year"></span> Agil Aliyev</p>
-        <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-        </script>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Agil Aliyev. Built with precision and care.</p>
+        </div>
     </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        function updateRangeValue(inputId, outputId) {
+            const input = document.getElementById(inputId);
+            const output = document.getElementById(outputId);
+            output.textContent = input.value;
+        }
+        
+        // Initialize range values
+        updateRangeValue('html_skill', 'html_value');
+        updateRangeValue('javascript_skill', 'js_value');
+        
+        // Add subtle animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-up');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.card, form').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 </html>
-

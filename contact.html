@@ -1,73 +1,201 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Contact form">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Agil Aliyev</title>
+    <meta name="description" content="Get in touch with Agil Aliyev for collaborations, projects, or general inquiries">
     <meta name="author" content="Agil Aliyev">
-    <title>Contact Me | Agil Aliyev</title>
-    <link rel="icon" href="assets/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📧</text></svg>">
 </head>
 <body>
     <header>
-        <nav>
-            <a href="index.html">Home</a> |
-            <a href="education.html">Education</a> |
-            <a href="schedule.html">Weekly Schedule</a> |
-            <a href="contact.html">Contact Me</a> |
-            <a href="questionnaire.html">Questionnaire</a>
-        </nav>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Agil Aliyev</a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="education.html">Education</a></li>
+                        <li><a href="schedule.html">Schedule</a></li>
+                        <li><a href="contact.html" aria-current="page">Contact</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="questionnaire.html">Survey</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </header>
+
     <main>
-        <h1>Contact Me</h1>
-        <p>Use the form below to get in touch. Fields marked with * are required.</p>
-        <p>Phone: <a href="tel:+994506977784">+994 50 697 77 84</a></p>
-        <form action="mailto:aqilliyev207@gmail.com?subject=Website%20Contact%20Form" method="post" enctype="text/plain">
-            <fieldset>
-                <legend>Basic Information</legend>
-                <label for="name">Full Name*:</label>
-                <input type="text" id="name" name="name" required>
-                <br>
-                <label for="email">Email*:</label>
-                <input type="email" id="email" name="email" required>
-                <br>
-                <label for="topic">Topic:</label>
-                <select id="topic" name="topic">
-                    <option value="general">General</option>
-                    <option value="project">Project Inquiry</option>
-                    <option value="feedback">Feedback</option>
-                </select>
-            </fieldset>
-            <fieldset>
-                <legend>Preferences</legend>
-                <p>Preferred contact method:</p>
-                <label><input type="radio" name="contact_method" value="email" checked> Email</label>
-                <label><input type="radio" name="contact_method" value="phone"> Phone</label>
-                <br>
-                <label for="subscribe"><input type="checkbox" id="subscribe" name="subscribe" value="yes"> Subscribe to updates</label>
-            </fieldset>
-            <fieldset>
-                <legend>Message</legend>
-                <label for="message">Your message:</label>
-                <br>
-                <textarea id="message" name="message" rows="6" cols="50" placeholder="Write your message here..."></textarea>
-            </fieldset>
-            <p>
-                <button type="submit">Send</button>
-                <button type="reset">Reset</button>
-            </p>
-        </form>
-        <p>If the form does not open your email app, click this direct link: 
-            <a href="mailto:aqilliyev207@gmail.com?subject=Website%20Contact%20Form">Email Agil Aliyev</a>
-        </p>
+        <div class="content-wrapper">
+            <section class="hero">
+                <h1>Let's Connect</h1>
+                <p>I'm always excited to discuss new opportunities, collaborations, or just chat about technology.</p>
+            </section>
+
+            <section class="section">
+                <div class="layout-flex">
+                    <div class="content">
+                        <h2>Get In Touch</h2>
+                        <p>Feel free to reach out through any of the methods below. I typically respond within 24 hours.</p>
+                        
+                        <div class="card-grid">
+                            <div class="card hover-lift">
+                                <h3>📧 Email</h3>
+                                <p><strong>Primary:</strong> <a href="mailto:aqilliyev207@gmail.com">aqilliyev207@gmail.com</a></p>
+                                <p>Best for detailed discussions, project proposals, and formal communications.</p>
+                            </div>
+                            <div class="card hover-lift">
+                                <h3>📱 Phone</h3>
+                                <p><strong>WhatsApp:</strong> <a href="tel:+994506977784">+994 50 697 77 84</a></p>
+                                <p>Available for urgent matters or quick discussions.</p>
+                            </div>
+                            <div class="card hover-lift">
+                                <h3>💼 LinkedIn</h3>
+                                <p><strong>Professional:</strong> <a href="#" target="_blank">linkedin.com/in/agil-aliyev</a></p>
+                                <p>Connect for professional networking and career opportunities.</p>
+                            </div>
+                            <div class="card hover-lift">
+                                <h3>🐙 GitHub</h3>
+                                <p><strong>Code:</strong> <a href="#" target="_blank">github.com/agil-aliyev</a></p>
+                                <p>Check out my projects and contribute to open source.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <aside class="sidebar">
+                        <h3>Quick Response</h3>
+                        <div class="card">
+                            <h4>⚡ Response Time</h4>
+                            <p><strong>Email:</strong> Within 24 hours</p>
+                            <p><strong>Phone:</strong> Immediate (if available)</p>
+                            <p><strong>LinkedIn:</strong> Within 48 hours</p>
+                        </div>
+                        <div class="card">
+                            <h4>🕒 Best Times</h4>
+                            <p><strong>Weekdays:</strong> 18:00 - 22:00</p>
+                            <p><strong>Weekends:</strong> Flexible</p>
+                            <p><strong>Timezone:</strong> GMT+4 (Baku)</p>
+                        </div>
+                        <div class="card">
+                            <h4>💬 Preferred Topics</h4>
+                            <ul>
+                                <li>Web Development</li>
+                                <li>Cybersecurity</li>
+                                <li>Tech Startups</li>
+                                <li>Learning Resources</li>
+                            </ul>
+                        </div>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>Send a Message</h2>
+                <form action="mailto:aqilliyev207@gmail.com?subject=Website%20Contact%20Form" method="post" enctype="text/plain">
+                    <fieldset>
+                        <legend>Basic Information</legend>
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Your full name" class="focus-ring">
+                        
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com" class="focus-ring">
+                        
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+994 XX XXX XX XX" class="focus-ring">
+                        
+                        <label for="topic">Subject</label>
+                        <select id="topic" name="topic" class="focus-ring">
+                            <option value="general">General Inquiry</option>
+                            <option value="collaboration">Collaboration Opportunity</option>
+                            <option value="project">Project Discussion</option>
+                            <option value="mentorship">Mentorship Request</option>
+                            <option value="job">Job Opportunity</option>
+                            <option value="feedback">Website Feedback</option>
+                        </select>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Communication Preferences</legend>
+                        <p>How would you prefer me to respond?</p>
+                        <label>
+                            <input type="radio" name="contact_method" value="email" checked> 
+                            Email (Recommended)
+                        </label>
+                        <label>
+                            <input type="radio" name="contact_method" value="phone"> 
+                            Phone Call
+                        </label>
+                        <label>
+                            <input type="radio" name="contact_method" value="linkedin"> 
+                            LinkedIn Message
+                        </label>
+                        
+                        <br><br>
+                        <label>
+                            <input type="checkbox" id="newsletter" name="newsletter" value="yes"> 
+                            Subscribe to my newsletter for project updates and tech insights
+                        </label>
+                        
+                        <br><br>
+                        <label>
+                            <input type="checkbox" id="collaboration" name="collaboration" value="yes"> 
+                            Interested in collaboration opportunities
+                        </label>
+                        
+                        <br><br>
+                        <label>
+                            <input type="checkbox" id="mentorship" name="mentorship" value="yes"> 
+                            Would like mentorship or guidance
+                        </label>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Your Message</legend>
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="6" required placeholder="Tell me about your project, question, or how I can help you..." class="focus-ring"></textarea>
+                    </fieldset>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Send Message</button>
+                        <button type="reset" class="btn btn-secondary">Clear Form</button>
+                    </div>
+                </form>
+            </section>
+
+           
+        </div>
     </main>
+
     <footer>
-        <p>&copy; <span id="year"></span> Agil Aliyev</p>
-        <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-        </script>
+        <div class="container">
+            <p>&copy; <span id="year"></span> Agil Aliyev. Built with precision and care.</p>
+        </div>
     </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+        
+        // Add subtle animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-up');
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.card, form').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 </html>
-

@@ -1,0 +1,72 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ff0080;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00ff41;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="#0a0a0a"/>
+  
+  <!-- Gaming Setup -->
+  <!-- Monitor -->
+  <rect x="50" y="80" width="200" height="120" rx="10" fill="#1a1a1a" stroke="#00ffff" stroke-width="2" filter="url(#glow)"/>
+  <rect x="60" y="90" width="180" height="100" fill="#000" stroke="#00ff41" stroke-width="1"/>
+  
+  <!-- Screen Content -->
+  <rect x="70" y="100" width="160" height="80" fill="#001122"/>
+  <circle cx="100" cy="130" r="15" fill="#ff0080" filter="url(#glow)"/>
+  <circle cx="140" cy="130" r="15" fill="#00ffff" filter="url(#glow)"/>
+  <circle cx="180" cy="130" r="15" fill="#00ff41" filter="url(#glow)"/>
+  <rect x="80" y="150" width="140" height="20" fill="#333" rx="5"/>
+  <rect x="85" y="155" width="60" height="10" fill="#00ff41" rx="3"/>
+  
+  <!-- Monitor Stand -->
+  <rect x="120" y="200" width="60" height="10" fill="#2a2a2a"/>
+  <rect x="130" y="210" width="40" height="20" fill="#1a1a1a"/>
+  
+  <!-- Gaming Controller -->
+  <ellipse cx="300" cy="150" rx="40" ry="25" fill="#1a1a1a" stroke="#ff0080" stroke-width="2" filter="url(#glow)"/>
+  <circle cx="285" cy="145" r="8" fill="#00ffff" filter="url(#glow)"/>
+  <circle cx="315" cy="145" r="8" fill="#00ffff" filter="url(#glow)"/>
+  <rect x="290" y="155" width="20" height="8" fill="#333" rx="2"/>
+  
+  <!-- Keyboard -->
+  <rect x="50" y="220" width="150" height="30" rx="5" fill="#1a1a1a" stroke="#00ff41" stroke-width="1"/>
+  <rect x="60" y="225" width="10" height="8" fill="#333" rx="1"/>
+  <rect x="75" y="225" width="10" height="8" fill="#333" rx="1"/>
+  <rect x="90" y="225" width="10" height="8" fill="#333" rx="1"/>
+  <rect x="105" y="225" width="10" height="8" fill="#333" rx="1"/>
+  <rect x="120" y="225" width="10" height="8" fill="#333" rx="1"/>
+  <rect x="135" y="225" width="10" height="8" fill="#333" rx="1"/>
+  <rect x="150" y="225" width="10" height="8" fill="#333" rx="1"/>
+  <rect x="165" y="225" width="10" height="8" fill="#333" rx="1"/>
+  <rect x="180" y="225" width="10" height="8" fill="#333" rx="1"/>
+  
+  <!-- Gaming Headset -->
+  <path d="M 320 100 Q 340 90 360 100 Q 380 110 360 120 Q 340 130 320 120 Z" fill="#1a1a1a" stroke="#8a2be2" stroke-width="2" filter="url(#glow)"/>
+  <circle cx="350" cy="110" r="15" fill="#000" stroke="#8a2be2" stroke-width="1"/>
+  <rect x="345" y="125" width="10" height="20" fill="#2a2a2a"/>
+  
+  <!-- Neon Effects -->
+  <circle cx="100" cy="50" r="3" fill="#00ffff" filter="url(#glow)"/>
+  <circle cx="300" cy="50" r="3" fill="#ff0080" filter="url(#glow)"/>
+  <circle cx="200" cy="30" r="3" fill="#00ff41" filter="url(#glow)"/>
+  
+  <!-- Circuit Patterns -->
+  <path d="M 20 20 L 40 20 L 40 40 L 60 40" stroke="#00ffff" stroke-width="1" fill="none" opacity="0.5"/>
+  <path d="M 340 20 L 360 20 L 360 40 L 380 40" stroke="#ff0080" stroke-width="1" fill="none" opacity="0.5"/>
+  <path d="M 20 260 L 40 260 L 40 280 L 60 280" stroke="#00ff41" stroke-width="1" fill="none" opacity="0.5"/>
+  
+  <!-- Text -->
+  <text x="200" y="280" text-anchor="middle" fill="#00ffff" font-family="monospace" font-size="16" filter="url(#glow)">GAMING SETUP</text>
+</svg>
