@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research: Vulnerability & Crypto Reporting — Agil Aliyev</title>
+<meta name="description" content="In-progress research: a lightweight tool for network vulnerability and cryptographic configuration reporting in small organisations.">
+<meta name="theme-color" content="#f1efe9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23121211'/%3E%3Ccircle cx='23' cy='23' r='3.2' fill='%233f8a68'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="wrap">
+    <a class="mark" href="../index.html">Agil Aliyev <span class="mono">/ pt</span></a>
+    <nav class="nav" aria-label="Site">
+      <a href="../index.html#work"><span class="mono">←</span>All work</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <span class="clock mono"><span class="city">BAKU </span><b data-clock>--:--:--</b> GMT+4</span>
+  </div>
+</header>
+<main id="main">
+<section class="doc-head">
+  <div class="wrap grid">
+    <div class="crumbs mono"><a href="../index.html">index</a><span>/</span><a href="../index.html#work">work</a><span>/</span><span>R-92</span></div>
+    <h1 class="doc-title">Scanner <em>research</em></h1>
+    <dl class="meta"><dt>Record</dt><dd>R-92</dd><dt>Course</dt><dd>NS&amp;C, ADA</dd><dt>Team</dt><dd>3 students</dd><dt>Status</dt><dd><span class="status wip">in progress</span></dd></dl>
+    <p class="doc-lede">A lightweight tool for network vulnerability and cryptographic configuration reporting in small organisations. The goal is a report a small team can act on, ordered by what attackers actually exploit.</p>
+  </div>
+</section>
+<div class="doc-body"><div class="wrap grid">
+<div class="doc-sec" style="border-top:0;padding-top:0"><span class="label">notice</span><div class="content"><p class="mono" style="color:var(--accent);margin:0">This project is in progress. The problem is formulated and the method is designed. Implementation and evaluation are under way, so there are no results on this page yet.</p></div></div><section class="doc-sec reveal" aria-labelledby="s1">
+  <span class="label">0x01 · problem</span>
+  <div class="content"><h2 id="s1">Problem</h2><p>Exploiting known vulnerabilities is now one of the most common ways attackers get in, and organisations struggle to patch even the critical ones that are known to be exploited. Full scanners such as OpenVAS are hard to configure. Lighter open-source tools each cover part of the job: some match services to CVEs but don't check cryptography, others audit TLS and SSH but don't match CVEs.</p><p>Most tools also rank findings by CVSS severity, which measures how damaging a flaw would be, not how likely it is to be exploited.</p></div>
+  <aside class="margin">Scope: one IPv4 segment the organisation owns and is authorised to scan.</aside>
+</section>
+<section class="doc-sec reveal" aria-labelledby="s2">
+  <span class="label">0x02 · objectives</span>
+  <div class="content"><h2 id="s2">Objectives</h2><ol class="steps"><li>Discover live hosts, open ports and service versions on a target network.</li><li>Match services to known CVEs through the NIST National Vulnerability Database.</li><li>Check TLS and SSH for deprecated protocols, weak ciphers, weak key exchange and bad certificates.</li><li>Rank every finding and give a concrete fix for each one.</li><li>Generate a readable report, and compare accuracy and speed with OpenVAS on the same lab.</li></ol></div>
+  <aside class="margin"></aside>
+</section>
+<section class="doc-sec reveal" aria-labelledby="s3">
+  <span class="label">0x03 · model</span>
+  <div class="content"><h2 id="s3">Ranking model</h2><p class="formula" style="text-align:left">r<sub>f</sub>(<span class="lam">λ</span>) = <span class="lam">λ</span>ĉ<sub>f</sub> + (1 − <span class="lam">λ</span>) e<sub>f</sub></p><p>Each CVE finding gets a risk score that blends its normalised CVSS severity ĉ with its EPSS exploitation probability e. Setting λ = 1 reproduces the CVSS-only ranking current tools use. The ranking is judged by how high known-exploited (CISA KEV) findings appear, measured as average precision.</p><p>The whole design is framed as an optimisation over scan configuration and λ, under three hard limits: at most 10% false discoveries, no slower than OpenVAS, and no service disrupted during a scan.</p></div>
+  <aside class="margin">Cryptographic findings have no CVSS or EPSS value, so their level comes directly from the rule they break (NIST SP 800-52 Rev. 2, IETF deprecations of TLS 1.0/1.1 and RC4).</aside>
+</section>
+<section class="doc-sec reveal" aria-labelledby="s4">
+  <span class="label">0x04 · method</span>
+  <div class="content"><h2 id="s4">Method</h2><ul class="tags"><li>Python</li><li>python-nmap</li><li>NVD API</li><li>EPSS</li><li>CISA KEV</li><li>TLS/SSH checks</li><li>HTML/PDF report</li><li>OpenVAS (baseline)</li></ul><ol class="steps" style="margin-top:18px"><li>Isolated host-only lab with intentionally vulnerable machines and one fully patched control host.</li><li>Discovery and version detection with Nmap through python-nmap.</li><li>CVE lookup against a frozen snapshot of NVD, EPSS and KEV data.</li><li>Safe, non-intrusive checks for common misconfigurations and weak cryptography.</li><li>Evaluation against OpenVAS: detection rate, false-discovery rate, ranking quality and scan time.</li></ol></div>
+  <aside class="margin"></aside>
+</section>
+<section class="doc-sec reveal" aria-labelledby="s5">
+  <span class="label">0x05 · status</span>
+  <div class="content"><h2 id="s5">Status</h2><ul class="tags"><li>✓ topic &amp; team</li><li>✓ problem formulation</li><li style="color:var(--accent);border-color:var(--accent)">● implementation</li><li>○ evaluation</li><li>○ paper</li></ul><p style="margin-top:16px">Results will be added here once the evaluation is finished.</p></div>
+  <aside class="margin"></aside>
+</section>
+</div></div>
+</main>
+<nav class="doc-next" aria-label="More work"><div class="wrap">
+  <a class="link-arrow" href="devsecops.html"><span class="arr" aria-hidden="true">←</span> DevSecOps pipeline</a>
+  <a class="link-arrow" href="cyberarena.html">CyberArena lab <span class="arr" aria-hidden="true">→</span></a>
+</div></nav>
+<footer class="foot">
+  <div class="wrap">
+    <span class="c1 mono">© <button class="year" type="button" aria-label="Year. Click to change its representation.">2026</button> Agil Aliyev</span>
+    <span class="c2 mono fp" data-fingerprint="R-92" role="button" tabindex="0">sha256 …</span>
+    <span class="c3 mono">doc rev. 0.1 · draft</span>
+  </div>
+</footer>
+<div class="whisper" role="status" aria-live="polite"></div>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

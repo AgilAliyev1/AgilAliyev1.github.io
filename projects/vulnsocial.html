@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VulnSocial Penetration Test — Agil Aliyev</title>
+<meta name="description" content="AzInTelecom internship task: web application penetration test of the VulnSocial lab. 14 confirmed findings, chained to host root.">
+<meta name="theme-color" content="#f1efe9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23121211'/%3E%3Ccircle cx='23' cy='23' r='3.2' fill='%233f8a68'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="wrap">
+    <a class="mark" href="../index.html">Agil Aliyev <span class="mono">/ pt</span></a>
+    <nav class="nav" aria-label="Site">
+      <a href="../index.html#work"><span class="mono">←</span>All work</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <span class="clock mono"><span class="city">BAKU </span><b data-clock>--:--:--</b> GMT+4</span>
+  </div>
+</header>
+<main id="main">
+<section class="doc-head">
+  <div class="wrap grid">
+    <div class="crumbs mono"><a href="../index.html">index</a><span>/</span><a href="../index.html#internship-tasks">internship tasks</a><span>/</span><span>T-02</span></div>
+    <h1 class="doc-title">VulnSocial <em>pentest</em></h1>
+    <dl class="meta"><dt>Record</dt><dd>T-02</dd><dt>Type</dt><dd>Web app pentest</dd><dt>Where</dt><dd>AzInTelecom</dd><dt>Tested</dt><dd>2026.07.18–19</dd></dl>
+    <p class="doc-lede">A web application assessment of a containerised social network built for training: 14 confirmed findings, chained from a message in an inbox to root on the host.</p>
+  </div>
+</section>
+<div class="doc-body"><div class="wrap grid">
+<section class="doc-sec reveal" aria-labelledby="s1">
+  <span class="label">0x01 · objective</span>
+  <div class="content"><h2 id="s1">Objective</h2><p>Find and exploit weaknesses in the application and its supporting services, show their real impact by chaining them, and give remediation advice for each one.</p></div>
+  <aside class="margin">Scope: two VirtualBox machines provisioned for the exercise. No production data and no third-party systems.</aside>
+</section>
+<section class="doc-sec reveal" aria-labelledby="s2">
+  <span class="label">0x02 · technologies</span>
+  <div class="content"><h2 id="s2">Target &amp; tools</h2><ul class="tags"><li>Node.js / Express</li><li>EJS</li><li>MongoDB</li><li>PostgreSQL</li><li>Docker</li><li>nginx</li><li>Nmap</li><li>Gobuster</li><li>curl</li><li>Netcat</li><li>psql</li></ul></div>
+  <aside class="margin"></aside>
+</section>
+<section class="doc-sec reveal" aria-labelledby="s3">
+  <span class="label">0x03 · method</span>
+  <div class="content"><h2 id="s3">Method</h2><p>Black-box to grey-box, aligned with PTES and the OWASP Testing Guide. I began without credentials and later used registered test accounts.</p><ol class="steps"><li><div>Reconnaissance: host discovery, port and service scanning, content discovery.</div></li><li><div>Enumeration: technology stack, endpoints, accounts and roles.</div></li><li><div>Vulnerability analysis of authentication, sessions, input, files and database access.</div></li><li><div>Exploitation, to move each candidate from suspected to confirmed.</div></li><li><div>Post-exploitation, chaining findings towards the host.</div></li><li><div>Reporting, with evidence and a prioritised remediation roadmap.</div></li></ol></div>
+  <aside class="margin"></aside>
+</section>
+<section class="doc-sec reveal" aria-labelledby="s4">
+  <span class="label">0x04 · findings</span>
+  <div class="content"><h2 id="s4">Findings</h2><p>3 critical, 7 high, 4 medium. The ones that mattered most:</p><ol class="steps"><li><div><strong style="font-weight:500">Docker socket exposed inside the application container</strong> <span class="status">critical</span><br>Code running in the container could control Docker on the host, and through it the host itself.</div></li><li><div><strong style="font-weight:500">Stored XSS leading to admin session hijacking</strong> <span class="status">critical</span><br>Message content was not sanitised, and an automated admin bot opened every message.</div></li><li><div><strong style="font-weight:500">Arbitrary file write</strong> <span class="status">critical</span><br>A view template could be overwritten, leaving a persistent backdoor.</div></li><li><div><strong style="font-weight:500">Server-side template injection</strong> <span class="status">high</span><br>Admin post content was evaluated as a template, giving command execution as root in the container.</div></li><li><div><strong style="font-weight:500">PostgreSQL command execution</strong> <span class="status">high</span><br>An over-privileged database role could run operating system commands.</div></li><li><div><strong style="font-weight:500">Path traversal, unrestricted upload, weak session settings and hard-coded secrets</strong> <span class="status">high</span><br>Each one was confirmed separately.</div></li></ol></div>
+  <aside class="margin">Template injection was rated high, not critical, because re-testing showed it needed an admin session.</aside>
+</section>
+<section class="doc-sec reveal" aria-labelledby="s5">
+  <span class="label">0x05 · chain</span>
+  <div class="content"><h2 id="s5">Attack chain</h2><ol class="steps"><li><div>Send a stored XSS payload to the admin from a registered account.</div></li><li><div>The admin bot opens it and its session cookie is captured.</div></li><li><div>Use the admin session to trigger template injection: root in the container.</div></li><li><div>Recover configuration and map the internal Docker network.</div></li><li><div>Use the exposed Docker socket to reach the host file system: root on the host.</div></li></ol></div>
+  <aside class="margin"></aside>
+</section>
+<section class="doc-sec reveal" aria-labelledby="s6">
+  <span class="label">0x06 · fixes</span>
+  <div class="content"><h2 id="s6">Remediation priorities</h2><ol class="steps"><li><div>Remove the Docker socket from the application container.</div></li><li><div>Sanitise and encode user content, and never render it as a template.</div></li><li><div>Restrict uploads by content type and size, stored outside the web root.</div></li><li><div>Move secrets to a secrets manager and rotate all of them.</div></li><li><div>Harden session cookies, file paths and database privileges.</div></li></ol><p>The full report is 39 pages. Passwords, secrets and session cookies are redacted.</p><p><a class="link-arrow" href="../assets/reports/VulnSocial_Penetration_Test_Report.pdf" target="_blank" rel="noopener">Read the full report (PDF) <span class="arr" aria-hidden="true">↗</span></a></p></div>
+  <aside class="margin"></aside>
+</section>
+</div></div>
+</main>
+<nav class="doc-next" aria-label="More work"><div class="wrap">
+  <a class="link-arrow" href="cyberarena.html"><span class="arr" aria-hidden="true">←</span> CyberArena lab</a>
+  <a class="link-arrow" href="devsecops.html">DevSecOps pipeline <span class="arr" aria-hidden="true">→</span></a>
+</div></nav>
+<footer class="foot">
+  <div class="wrap">
+    <span class="c1 mono">© <button class="year" type="button" aria-label="Year. Click to change its representation.">2026</button> Agil Aliyev</span>
+    <span class="c2 mono fp" data-fingerprint="T-02" role="button" tabindex="0">sha256 …</span>
+    <span class="c3 mono">doc rev. 0.1 · draft</span>
+  </div>
+</footer>
+<div class="whisper" role="status" aria-live="polite"></div>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

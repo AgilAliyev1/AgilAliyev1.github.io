@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CyberArena Lab — Agil Aliyev</title>
+<meta name="description" content="AzInTelecom internship task: penetration test of the CyberArena lab machine. Three findings and seven flags.">
+<meta name="theme-color" content="#f1efe9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23121211'/%3E%3Ccircle cx='23' cy='23' r='3.2' fill='%233f8a68'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="wrap">
+    <a class="mark" href="../index.html">Agil Aliyev <span class="mono">/ pt</span></a>
+    <nav class="nav" aria-label="Site">
+      <a href="../index.html#work"><span class="mono">←</span>All work</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <span class="clock mono"><span class="city">BAKU </span><b data-clock>--:--:--</b> GMT+4</span>
+  </div>
+</header>
+<main id="main">
+<section class="doc-head">
+  <div class="wrap grid">
+    <div class="crumbs mono"><a href="../index.html">index</a><span>/</span><a href="../index.html#internship-tasks">internship tasks</a><span>/</span><span>T-01</span></div>
+    <h1 class="doc-title">CyberArena <em>lab</em></h1>
+    <dl class="meta"><dt>Record</dt><dd>T-01</dd><dt>Type</dt><dd>Lab pentest</dd><dt>Where</dt><dd>AzInTelecom</dd><dt>Flags</dt><dd>7</dd></dl>
+    <p class="doc-lede">A penetration test of a deliberately vulnerable Ubuntu machine and the web application running on it, written up as a report during my internship.</p>
+  </div>
+</section>
+<div class="doc-body"><div class="wrap grid">
+<section class="doc-sec reveal" aria-labelledby="s1">
+  <span class="label">0x01 · objective</span>
+  <div class="content"><h2 id="s1">Objective</h2><p>Examine the machine and its web application, collect the flags hidden on it, and report every weakness I could confirm.</p></div>
+  <aside class="margin">Scope: one lab virtual machine, tested from a Kali VM on the same network.</aside>
+</section>
+<section class="doc-sec reveal" aria-labelledby="s2">
+  <span class="label">0x02 · technologies</span>
+  <div class="content"><h2 id="s2">Tools</h2><ul class="tags"><li>Kali Linux</li><li>Nmap</li><li>curl</li><li>grep</li><li>JWT decoding</li><li>Source review</li></ul></div>
+  <aside class="margin"></aside>
+</section>
+<section class="doc-sec reveal" aria-labelledby="s3">
+  <span class="label">0x03 · approach</span>
+  <div class="content"><h2 id="s3">Approach</h2><ol class="steps"><li><div>Opened GRUB recovery mode, which was not password protected, and reset the root password to get local access.</div></li><li><div>Searched the file system for flags from that access.</div></li><li><div>Scanned the machine with Nmap from Kali to see what it exposed.</div></li><li><div>Tested the web application&#39;s login and signup forms by hand with curl.</div></li><li><div>Read the application source to explain what I saw and to find the next step.</div></li></ol></div>
+  <aside class="margin">Physical or console access without a bootloader password is already root.</aside>
+</section>
+<section class="doc-sec reveal" aria-labelledby="s4">
+  <span class="label">0x04 · findings</span>
+  <div class="content"><h2 id="s4">Findings</h2><ol class="steps"><li><div><strong style="font-weight:500">Privilege escalation through mass assignment</strong> <span class="status">critical</span><br>The signup endpoint trusted the role sent by the client, so a normal registration could create an admin. Reading the source showed a third role above admin, and the same flaw reached that page too.</div></li><li><div><strong style="font-weight:500">SQL injection in the signup form</strong> <span class="status">high</span><br>An injected condition made the application report an unregistered username as taken, which showed the input was running as SQL.</div></li><li><div><strong style="font-weight:500">Hard-coded database password</strong> <span class="status">medium</span><br>The database root password was stored in plain text in the application&#39;s configuration file.</div></li></ol></div>
+  <aside class="margin"></aside>
+</section>
+<section class="doc-sec reveal" aria-labelledby="s5">
+  <span class="label">0x05 · results</span>
+  <div class="content"><h2 id="s5">Results</h2><p>Seven flags found, and access to the highest-privileged page in the application. Flags, passwords and request payloads are left out of this page on purpose.</p></div>
+  <aside class="margin"></aside>
+</section>
+</div></div>
+</main>
+<nav class="doc-next" aria-label="More work"><div class="wrap">
+  <a class="link-arrow" href="../index.html#work"><span class="arr" aria-hidden="true">←</span> All work</a>
+  <a class="link-arrow" href="vulnsocial.html">VulnSocial <span class="arr" aria-hidden="true">→</span></a>
+</div></nav>
+<footer class="foot">
+  <div class="wrap">
+    <span class="c1 mono">© <button class="year" type="button" aria-label="Year. Click to change its representation.">2026</button> Agil Aliyev</span>
+    <span class="c2 mono fp" data-fingerprint="T-01" role="button" tabindex="0">sha256 …</span>
+    <span class="c3 mono">doc rev. 0.1 · draft</span>
+  </div>
+</footer>
+<div class="whisper" role="status" aria-live="polite"></div>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>

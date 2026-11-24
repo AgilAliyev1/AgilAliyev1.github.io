@@ -1,0 +1,9 @@
+/* TEAM */
+  Built by: Agil Aliyev
+  Location: Baku, Azerbaijan
+
+/* SITE */
+  Standards: HTML, CSS, vanilla JS
+  Fonts: Inter Tight, Instrument Serif, JetBrains Mono
+  Cookies: 0
+  Trackers: 0

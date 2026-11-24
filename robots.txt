@@ -1,0 +1,5 @@
+# Hello, crawler. Hello, human.
+# Reminder: robots.txt is a polite request, not access control.
+
+User-agent: *
+Disallow: /vault/

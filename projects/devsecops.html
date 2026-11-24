@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DevSecOps Pipeline — Agil Aliyev</title>
+<meta name="description" content="AzInTelecom internship task: a GitLab CI security pipeline for OWASP Juice Shop with SAST, secret, dependency, image and dynamic scanning, DefectDojo and a quality gate.">
+<meta name="theme-color" content="#f1efe9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23121211'/%3E%3Ccircle cx='23' cy='23' r='3.2' fill='%233f8a68'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="wrap">
+    <a class="mark" href="../index.html">Agil Aliyev <span class="mono">/ pt</span></a>
+    <nav class="nav" aria-label="Site">
+      <a href="../index.html#work"><span class="mono">←</span>All work</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <span class="clock mono"><span class="city">BAKU </span><b data-clock>--:--:--</b> GMT+4</span>
+  </div>
+</header>
+<main id="main">
+<section class="doc-head">
+  <div class="wrap grid">
+    <div class="crumbs mono"><a href="../index.html">index</a><span>/</span><a href="../index.html#internship-tasks">internship tasks</a><span>/</span><span>T-03</span></div>
+    <h1 class="doc-title">DevSecOps <em>pipeline</em></h1>
+    <dl class="meta"><dt>Record</dt><dd>T-03</dd><dt>Type</dt><dd>CI/CD security</dd><dt>Where</dt><dd>AzInTelecom</dd><dt>Recorded</dt><dd>2026.07.28</dd></dl>
+    <p class="doc-lede">A GitLab CI pipeline that builds OWASP Juice Shop, scans it five different ways, collects every finding in DefectDojo and refuses to pass while serious ones are open.</p>
+  </div>
+</section>
+<div class="doc-body"><div class="wrap grid">
+<section class="doc-sec reveal" aria-labelledby="s1">
+  <span class="label">0x01 · objective</span>
+  <div class="content"><h2 id="s1">Objective</h2><p>Put security checks inside the delivery pipeline, so that every push is tested automatically and a build with high or critical findings is stopped.</p></div>
+  <aside class="margin">Target: OWASP Juice Shop, an application that is insecure by design.</aside>
+</section>
+<section class="doc-sec reveal" aria-labelledby="s2">
+  <span class="label">0x02 · technologies</span>
+  <div class="content"><h2 id="s2">Technologies</h2><ul class="tags"><li>GitLab CI</li><li>Docker</li><li>Semgrep</li><li>Gitleaks</li><li>npm audit</li><li>Trivy</li><li>OWASP ZAP</li><li>DefectDojo</li><li>jq</li></ul></div>
+  <aside class="margin"></aside>
+</section>
+<section class="doc-sec reveal" aria-labelledby="s3">
+  <span class="label">0x03 · stages</span>
+  <div class="content"><h2 id="s3">Pipeline stages</h2><ol class="steps"><li><div><strong style="font-weight:500">test</strong>: static analysis with Semgrep, secret detection with Gitleaks, dependency audit with npm.</div></li><li><div><strong style="font-weight:500">build</strong>: build the Docker image and save it as an artifact.</div></li><li><div><strong style="font-weight:500">scan</strong>: scan the image with Trivy for high and critical issues.</div></li><li><div><strong style="font-weight:500">deploy</strong>: start the image as a test container.</div></li><li><div><strong style="font-weight:500">dast</strong>: run an OWASP ZAP baseline scan against the running application.</div></li><li><div><strong style="font-weight:500">upload_findings</strong>: send each report to DefectDojo through its API.</div></li><li><div><strong style="font-weight:500">quality_gate</strong>: ask DefectDojo for open high and critical findings, and fail if there are any.</div></li></ol><div style="height:20px"></div><figure class="shot"><div class="frame"><img src="../assets/img/devsecops-pipelines.png" alt="GitLab pipeline list: run 60 passes six stages and fails at the quality gate" loading="lazy"></div><figcaption class="mono"><span>run #60: six stages pass, the gate stops it</span><span>fig. 01</span></figcaption></figure></div>
+  <aside class="margin"></aside>
+</section>
+<section class="doc-sec reveal" aria-labelledby="s4">
+  <span class="label">0x04 · results</span>
+  <div class="content"><h2 id="s4">Results</h2><p>The recorded run took about 31 minutes. Six stages passed and the quality gate failed the pipeline, which is what it should do against a deliberately vulnerable application. DefectDojo showed 832 active findings afterwards: 35 critical, 637 high, 150 medium and 10 low.</p><p>Those totals add up over repeated runs, because DefectDojo was not removing duplicates. This run moved the total from 663 to 832.</p><div style="height:20px"></div><figure class="shot"><div class="frame"><img src="../assets/img/devsecops-gate.png" alt="Quality gate log: 35 critical and 637 high findings, pipeline failed" loading="lazy"></div><figcaption class="mono"><span>quality gate log</span><span>fig. 02</span></figcaption></figure></div>
+  <aside class="margin">A red pipeline is the success case here: the gate did its job.</aside>
+</section>
+<section class="doc-sec reveal" aria-labelledby="s5">
+  <span class="label">0x05 · video</span>
+  <div class="content"><h2 id="s5">Walkthrough</h2><p>A recording of just under five minutes: the configuration, a live run and the findings in DefectDojo.</p><a class="link-arrow" href="https://drive.google.com/file/d/15r1yzr-QDDbpP8CMtmk3CksooDDygH91/view?usp=sharing" target="_blank" rel="noopener noreferrer">Watch on Google Drive <span class="arr" aria-hidden="true">↗</span></a></div>
+  <aside class="margin"></aside>
+</section>
+</div></div>
+</main>
+<nav class="doc-next" aria-label="More work"><div class="wrap">
+  <a class="link-arrow" href="vulnsocial.html"><span class="arr" aria-hidden="true">←</span> VulnSocial</a>
+  <a class="link-arrow" href="research.html">Scanner research <span class="arr" aria-hidden="true">→</span></a>
+</div></nav>
+<footer class="foot">
+  <div class="wrap">
+    <span class="c1 mono">© <button class="year" type="button" aria-label="Year. Click to change its representation.">2026</button> Agil Aliyev</span>
+    <span class="c2 mono fp" data-fingerprint="T-03" role="button" tabindex="0">sha256 …</span>
+    <span class="c3 mono">doc rev. 0.1 · draft</span>
+  </div>
+</footer>
+<div class="whisper" role="status" aria-live="polite"></div>
+<script src="../assets/js/main.js" defer></script>
+</body>
+</html>
